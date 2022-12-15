@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+table{
+    width: 50%;
+    border: solid 2px #000;
+}
+section{
+    width: 50%;
+}
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 25%;
+    border: solid 2px #000;
+
+
+}
+
+tr{
+    height: 10em;
+    border: solid 2px #000;
+}
+
+th{
+    height: 10em;
+    border: solid 2px #000;
+}
+
+td{
+    height: 10em;
+    border: solid 2px #000;
+}
