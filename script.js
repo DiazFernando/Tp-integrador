@@ -9,7 +9,6 @@ async function obtenerDatos(){
              <td>${element.nombre} ${ element.apellido}</td>
              <td>${element.area}</td>
              <td>${element.domicilio}</td>
-             <td><img src="${element.foto}"></td>
              <td><button class="ver" id="${element.id}">Ver</button></td>
              </tr>`      
     
@@ -32,23 +31,46 @@ async function mostrarUno(id){
     let empleado = document.getElementById("seleccionado");
     empleado.innerHTML = "";
     let nombreCompleto = document.createElement("h4");
-    nombreCompleto.innerHTML = datos.nombre +" "+ datos.apellido;
+    nombreCompleto.innerHTML ="Nombre y Apellido: " + datos.nombre +" "+ datos.apellido;
 
     let area = document.createElement("h4");
-    area.innerHTML = datos.area;
+    area.innerHTML = "Area: " + datos.area;
 
     let domicilio = document.createElement("h4");
-    domicilio.innerHTML = datos.domicilio;
+    domicilio.innerHTML = "Domicilio: " + datos.domicilio;
 
     let imagen = document.createElement("h4");
     imagen.innerHTML = `<img src="${datos.foto}"></img>`
 
     
-    seleccionado.appendChild(nombreCompleto);
-    seleccionado.appendChild(area);
-    seleccionado.appendChild(domicilio);
-    seleccionado.appendChild(imagen);
+    empleado.appendChild(nombreCompleto);
+    empleado.appendChild(area);
+    empleado.appendChild(domicilio);
+    empleado.appendChild(imagen);
 
 }
 
+let misDatos ={
+    "nombre":"Fernando",
+    "apellido":"Diaz",
+    "area":"Developer",
+    "domicilio":"Los Arrieros 88, Ushuaia",
+    "foto":"https://www.cronista.com/files/image/495/495493/6393c9fe5226c.jpg",
+    "id":"90"
+}
+
+async function modificarDatos(datos) {
+
+    const res = await fetch("https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados/"+datos.id, {
+        method: "PUT",
+        body:JSON.stringify(datos),
+        headers:{"Content-type":"application/json"}
+    });
+    const data = await res.json();
+        console.log(data);
+}
+
+
+
 obtenerDatos();
+modificarDatos(misDatos);
