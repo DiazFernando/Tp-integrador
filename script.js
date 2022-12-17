@@ -28,8 +28,10 @@ async function mostrarUno(id){
     let datos = await respuesta.json();
     console.log(datos);
 
-    let empleado = document.getElementById("seleccionado");
-    empleado.innerHTML = "";
+    let datosEmpleado = document.querySelector(".datos");
+    datosEmpleado.innerHTML = "";
+    let fotoEmpleado = document.querySelector(".imagen");
+    fotoEmpleado.innerHTML = "";
     let nombreCompleto = document.createElement("h4");
     nombreCompleto.innerHTML ="Nombre y Apellido: " + datos.nombre +" "+ datos.apellido;
 
@@ -43,10 +45,10 @@ async function mostrarUno(id){
     imagen.innerHTML = `<img src="${datos.foto}"></img>`
 
     
-    empleado.appendChild(nombreCompleto);
-    empleado.appendChild(area);
-    empleado.appendChild(domicilio);
-    empleado.appendChild(imagen);
+    datosEmpleado.appendChild(nombreCompleto);
+    datosEmpleado.appendChild(area);
+    datosEmpleado.appendChild(domicilio);
+    fotoEmpleado.appendChild(imagen);
 
 }
 
